@@ -63,6 +63,24 @@ def ngram_table(text, n=3, limit=0):
 
     return limited_ordered_dict
 
+def cosine_similarity(known, unknown):
+    dot_product = 0
+    for x in known: #calculates dot product
+        if x in unknown:
+            dot_product += known[x]*unknown[x]
+    
+    magnitude_known = calculate_magnitude(known)
+    magnitude_unknown = calculate_magnitude(unknown)
+    
+    return dot_product / (magnitude_known * magnitude_unknown) #calculates entire cosine similarity and returns result
+
+def calculate_magnitude(dictionary): #calculates magnitude of dictionary
+    from math import sqrt
+    magnitude = 0
+    for x in dictionary:
+        magnitude += dictionary[x]**2
+    return sqrt(magnitude)
+
 
 print(ngram_table("hiep, hiep, hoera!", 3, 0))
 
