@@ -67,7 +67,8 @@ def ngram_table(text, n=3, limit=0):
 def write_ngrams(table, filename):
     with open(filename, 'w') as f: 
         for key, value in table.items(): 
-            f.write('%s:%s\n' % (key, value)) # ron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/
+            string = '%s:%s\n' % (key, value)
+            f.write(string.encode('utf8'))# bron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/
     f.close()
         
     
