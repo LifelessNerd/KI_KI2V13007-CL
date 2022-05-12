@@ -63,10 +63,11 @@ def ngram_table(text, n=3, limit=0):
 
     return limited_ordered_dict
 
+
 def write_ngrams(table, filename):
     with open(filename, 'w') as f: 
         for key, value in table.items(): 
-            f.write('%s:%s\n' % (key, value)) #bron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/              
+            f.write('%s:%s\n' % (key, value)) # ron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/
     f.close()
         
     
@@ -78,32 +79,28 @@ def read_ngrams(filename):
     f.close()
     
     nstring = string.split("\n")
-    del nstring[-1] #laatse zin is een lege string als het gesplit wordt
+    del nstring[-1] # laatse zin is een lege string als het gesplit wordt
     for element in nstring:     
         splitter = element.split(":")
-        print(splitter)
         dicto[splitter[0]] = int(splitter[1])
             
     return dicto
 
 def cosine_similarity(known, unknown):
     dot_product = 0
-    for x in known: #calculates dot product
+    for x in known: # calculates dot product
         if x in unknown:
             dot_product += known[x]*unknown[x]
     
     magnitude_known = calculate_magnitude(known)
     magnitude_unknown = calculate_magnitude(unknown)
     
-    return dot_product / (magnitude_known * magnitude_unknown) #calculates entire cosine similarity and returns result
+    return dot_product / (magnitude_known * magnitude_unknown) # calculates entire cosine similarity and returns result
 
-def calculate_magnitude(dictionary): #calculates magnitude of dictionary
+def calculate_magnitude(dictionary): # calculates magnitude of dictionary
     from math import sqrt
     magnitude = 0
     for x in dictionary:
         magnitude += dictionary[x]**2
     return sqrt(magnitude)
-
-
-print(ngram_table("hiep, hiep, hoera!", 3, 0))
 
