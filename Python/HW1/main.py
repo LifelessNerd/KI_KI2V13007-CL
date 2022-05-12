@@ -63,6 +63,29 @@ def ngram_table(text, n=3, limit=0):
 
     return limited_ordered_dict
 
+def write_ngrams(table, filename):
+    with open(filename, 'w') as f: 
+        for key, value in table.items(): 
+            f.write('%s:%s\n' % (key, value)) #bron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/              
+    f.close()
+        
+    
+def read_ngrams(filename):
+    dicto = dict()  
+    splitter = []
+    with open(filename, "r") as f:
+        string = f.read()
+    f.close()
+    
+    nstring = string.split("\n")
+    del nstring[-1] #laatse zin is een lege string als het gesplit wordt
+    for element in nstring:     
+        splitter = element.split(":")
+        print(splitter)
+        dicto[splitter[0]] = int(splitter[1])
+            
+    return dicto
+
 def cosine_similarity(known, unknown):
     dot_product = 0
     for x in known: #calculates dot product
