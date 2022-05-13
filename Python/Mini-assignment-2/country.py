@@ -69,7 +69,7 @@ class Country:
             self.population = self.population - deaths
             if self.population < 0:
                 self.population = 0
-            percentage = ((self.population - oud)/oud)*100
+            percentage = abs(((self.population - oud)/oud)*100)
 
             print("Population decreased by {}%".format(percentage))
         except:
@@ -78,12 +78,8 @@ class Country:
             print("The population of", self.name, "is kept at", self.population)
 
 
-# nederland = Country(name="Nederland", pop=100)
-# yugoslavia = Country("Yugoslavia", pop=3)
-# yugoslavia.deaths(deaths=2)
-# yugoslavia.births(births=10)
-# nederland.births(20)
-# print(nederland.population)
-# nederland.deaths(20)
-# nederland.deaths(20)
+nederland = Country(name="Nederland", pop=17000000)
+nederland.births(17000000)
+nederland.deaths(170000)
+
 
