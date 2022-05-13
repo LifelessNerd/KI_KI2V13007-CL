@@ -78,8 +78,8 @@ class Country:
             print("The population of", self.name, "is kept at", self.population)
 
 
-nederland = Country(name="Nederland", pop=17000000)
-nederland.births(17000000)
-nederland.deaths(170000)
+# nederland = Country(name="Nederland", pop=17000000)
+# nederland.births(17000000)
+# nederland.deaths(170000)
 
 
