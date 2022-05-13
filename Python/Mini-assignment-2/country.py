@@ -38,39 +38,52 @@ class Country:
         Adds the given number to the population.
         Prints "Population increased by x%", where x is
             how much the population grew by due to these births
-            If the population was previously 0, it raises a ValueError
+            If the population was previously 0, it tells the user and no population is changed
         """
-        # self.births = births
 
         try:
-            percentage = (births / self.population) * 100
+            oud = self.population
             self.population = self.population + births
+            percentage = ((self.population - oud)/oud)*100
+            print("Population increased by {}%".format(percentage))
         except:
-            raise ValueError("Population of the country cannot be zero: division by zero occured")
+            print("Could not change population: population of the country cannot be zero: division by zero occured.")
+            self.population = oud
+            print("The population of", self.name, "is kept at", self.population)
 
-        print("Population increased by {}%".format(percentage))
 
-    def deaths(self, deaths):  # TODO: add parameter(s)
+
+
+    def deaths(self, deaths):
         """
         @param deaths:
         Removes the given number from the population, unless that takes the
         population below 0, in which case it reduces it to 0
         Prints "Population decreased by x%", where x is
             how much the population decreased by due to these deaths.
-            If the population was previously 0, #TODO
+            If the population was previously 0, it tells the user and no population is changed
 
         """
-        # TODO Including adding the parameter(s) to deaths above
         try:
+            oud = self.population
             self.population = self.population - deaths
             if self.population < 0:
                 self.population = 0
+            percentage = ((self.population - oud)/oud)*100
 
-            percentage = (deaths /self.population) * 100
-            # Dit werkt niet zo
+            print("Population decreased by {}%".format(percentage))
         except:
-            # ja bnagger
-            pass
+            print("Could not change population: population of the country cannot be zero: division by zero occured.")
+            self.population = oud
+            print("The population of", self.name, "is kept at", self.population)
 
-        print("Population decreased by {}%".format(percentage))
+
+# nederland = Country(name="Nederland", pop=100)
+# yugoslavia = Country("Yugoslavia", pop=3)
+# yugoslavia.deaths(deaths=2)
+# yugoslavia.births(births=10)
+# nederland.births(20)
+# print(nederland.population)
+# nederland.deaths(20)
+# nederland.deaths(20)
 
