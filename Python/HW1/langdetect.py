@@ -65,16 +65,17 @@ def ngram_table(text, n=3, limit=0):
 
 
 def write_ngrams(table, filename):
-    with open(filename, 'w') as f: 
+    with open(filename, 'w', encoding='utf8') as f:
         for key, value in table.items(): 
-            f.write('%s:%s\n' % (key, value)) # ron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/
+            string = '%s:%s\n' % (key, value)
+            f.write(string) # bron: https://www.geeksforgeeks.org/write-a-dictionary-to-a-file-in-python/
     f.close()
         
     
 def read_ngrams(filename):
     dicto = dict()  
     splitter = []
-    with open(filename, "r") as f:
+    with open(filename, "r", encoding='utf8') as f:
         string = f.read()
     f.close()
     
@@ -85,6 +86,7 @@ def read_ngrams(filename):
         dicto[splitter[0]] = int(splitter[1])
             
     return dicto
+
 
 def cosine_similarity(known, unknown):
     dot_product = 0
