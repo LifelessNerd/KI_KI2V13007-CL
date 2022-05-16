@@ -83,7 +83,7 @@ def read_ngrams(filename):
     del nstring[-1] # laatse zin is een lege string als het gesplit wordt
     for element in nstring:     
         splitter = element.split(":")
-        dicto[splitter[0]] = int(splitter[1])
+        dicto[splitter[0]] = int(splitter[-1])
             
     return dicto
 
