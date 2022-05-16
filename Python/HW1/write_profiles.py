@@ -4,6 +4,8 @@ import os
 
 
 def make_profiles(location, n, limit):
+    """@param location: path
+    DOCSTRING"""
     # evt default: datafiles/datafiles/training/
 
     os.chdir(location)
@@ -31,9 +33,17 @@ def make_profiles(location, n, limit):
         except OSError as error:
             pass
         os.chdir("models/")
+        path = os.path.join(os.getcwd(), str(n) + "-" + str(limit))
+        try:
+            os.mkdir(path)
+            print("Models folder bestond nog niet, gemaakt in", os.getcwd())
+        except OSError as error:
+            pass
+        os.chdir(str(n) + "-" + str(limit))
         # Hij overwrite wel gwn alle profiles steeds, dus als we dat niet willen moeten we daar iets aan doen
         ld.write_ngrams(table, naam + "-profile")
         print("Profile voor", f.name, "gemaakt!")
+        os.chdir('../')
         os.chdir('../')
         os.chdir(location)
         # Dit kan beter, pech gehad! file shit in Python is echt het KUTSTE wat ik ooit heb gedaan
