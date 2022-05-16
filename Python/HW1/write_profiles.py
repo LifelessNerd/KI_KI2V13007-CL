@@ -47,6 +47,7 @@ def make_profiles(location, n, limit):
         os.chdir('../')
         os.chdir(location)
         # Dit kan beter, pech gehad! file shit in Python is echt het KUTSTE wat ik ooit heb gedaan
+    print("Models stored in: " + path)
 
 
 if __name__ == "__main__":

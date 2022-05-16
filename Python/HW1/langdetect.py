@@ -99,6 +99,7 @@ def cosine_similarity(known, unknown):
     
     return dot_product / (magnitude_known * magnitude_unknown) # calculates entire cosine similarity and returns result
 
+
 def calculate_magnitude(dictionary): # calculates magnitude of dictionary
     from math import sqrt
     magnitude = 0
