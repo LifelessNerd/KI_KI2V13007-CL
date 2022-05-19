@@ -59,7 +59,7 @@ class LangMatcher:
 
         :param filename: Filename of the text file that needs to be opened/scored
         """
-        with open(filename) as file:
+        with open(filename, encoding = encoding) as file:
             string = file.read()
             return self.score(string, 1)
 
