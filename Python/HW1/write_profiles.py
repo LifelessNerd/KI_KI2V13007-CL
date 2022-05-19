@@ -4,8 +4,16 @@ import os
 
 
 def make_profiles(location, n, limit):
-    """@param location: path
-    DOCSTRING"""
+    """
+    This function gets all training language files out of the location directory, opens them, creates n-gram-tables out
+    of each of them, and puts those in language-specific files. They are put in a models folder based on the lenght
+    of the n-grams (n), this folder is created if it did not exist already. Any profiles that are already present get
+    overwritten.
+    :param location:
+    :param n:
+    :param limit:
+    :return:
+    """
     # evt default: datafiles/datafiles/training/
 
     os.chdir(location)
@@ -54,5 +62,5 @@ if __name__ == "__main__":
     # Alle dingen die moeten gebeuren als de file niet geimporteerd wordt maar gerunt
     # Is handig voor testing maar in het eindproduct bestaat deze file veelal uit declaraties en functies en geen statements
 
-    location = "datafiles/datafiles/training/"
-    make_profiles(location, 2, 200)
+    make_profiles("datafiles/datafiles/training", 3, 200)
+    make_profiles("datafiles/datafiles/training", 2, 200)
