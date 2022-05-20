@@ -64,9 +64,6 @@ class LangMatcher:
             return self.score(string, 1)
 
 
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
 if __name__ == "__main__":
     import sys
     
@@ -82,8 +79,7 @@ if __name__ == "__main__":
         print(textfile, ln2.recognize(textfile), ln2.gramlijst[0][0])
     except OSError:
         print("OSError: Je argumenten waren niet correct/de files zijn niet gevonden!")
-=======
->>>>>>> Stashed changes
+
 if __name__ == "__main__": #this function takes the first two arguments, creates a LangMatcher object with the second argument takes the third argument to use it as a text to recognize.
     import sys             #then it prints the filename (third argument), the predicted language and the similarity score (using a membervariable from ln2).
     ln, textfile = sys.argv[1], sys.argv[2]  
@@ -92,9 +88,5 @@ if __name__ == "__main__": #this function takes the first two arguments, creates
     os.chdir("../")    
     os.chdir("./datafiles")
     print(textfile, ln2.recognize(textfile), ln2.gramlijst[0][0])
-    
-<<<<<<< Updated upstream
-=======
->>>>>>> 98c653f7dd198475a7b53b059382d7fcef956e71
->>>>>>> Stashed changes
+
 

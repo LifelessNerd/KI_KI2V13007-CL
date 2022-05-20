@@ -13,14 +13,6 @@ langdict["it"] = "Italian"
 langdict["nl"] = "Dutch"
 langdict["pt"] = "Portuguese"
 langdict["sv"] = "Swedish"
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
-=======
->>>>>>> Stashed changes
-
-
->>>>>>> 98c653f7dd198475a7b53b059382d7fcef956e71
 
 
 
@@ -35,15 +27,7 @@ def eval(model_path, test_path):
     :param model_path: path to location where ngram dictionaries are stored (./models/2-200 or ./models/3-200)
     :param test_path: path to location where testdata is stored (path to europarl-10/30/90)
     """
-<<<<<<< HEAD
 
-=======
-    
-    
-<<<<<<< Updated upstream
-=======
->>>>>>> 98c653f7dd198475a7b53b059382d7fcef956e71
->>>>>>> Stashed changes
     gram = model_path[-5]
     zinl = test_path[-2:]
     goed = 0 #counts the number of correct predictions
