@@ -18,6 +18,7 @@ class LangMatcher:
         :param profilepath: The path to a directory with the saved ngram profiles
         """
         self.lang_dict = {}
+        self.profilepath = profilepath
         os.chdir(profilepath)
         for file in os.listdir():  # Loop through all files in provided dir
             temp_key_list = file.split("-")
@@ -38,16 +39,18 @@ class LangMatcher:
         gramlijst = []
         gramlijstwinnaars = []
 
-        bigram = ld.ngram_table(text, 2, 200)
-        trigram = ld.ngram_table(text, 3, 200)
+        nlimit = os.path.split(self.profilepath)[1]
+        n = nlimit.split("-")[0]
+        limit = nlimit.split("-")[-1]
+
+        ngrams = ld.ngram_table(text, int(n), int(limit)) # ngrams = ld.ngram_table(text, int(n), int(limit)) werkt niet
         for alledingen in self.lang_dict:
-            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], bigram), alledingen]) 
-        for alledingen in self.lang_dict:
-            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], trigram), alledingen])
-        gramlijst.sort(reverse = True)
+            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], ngrams), alledingen])
+
+        gramlijst.sort(reverse=True)
         for i in range(k_best):
             gramlijstwinnaars.append(gramlijst[i][1])
-        
+
         return gramlijstwinnaars
 
     def recognize(self, filename, encoding='utf-8'):
