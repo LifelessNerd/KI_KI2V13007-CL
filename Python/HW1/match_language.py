@@ -64,18 +64,13 @@ class LangMatcher:
             return self.score(string, 1)
 
 
-if __name__ == "__main__":
-    import sys
-    
-    
-    ln, textfile = sys.argv[1], sys.argv[2]
-   
-    ln2 = LangMatcher(ln)
-    
+if __name__ == "__main__": #this function takes the first two arguments, creates a LangMatcher object with the second argument takes the third argument to use it as a text to recognize.
+    import sys             #then it prints the filename (third argument), the predicted language and the similarity score (using a membervariable from ln2).
+    ln, textfile = sys.argv[1], sys.argv[2]  
+    ln2 = LangMatcher(ln)   
     os.chdir("../")
-    os.chdir("../")
-    
+    os.chdir("../")    
     os.chdir("./datafiles")
     print(textfile, ln2.recognize(textfile), ln2.gramlijst[0][0])
-    # Zie whatsapp wat hier nog moet
+    
 
