@@ -38,19 +38,16 @@ class LangMatcher:
         gramlijst = []
         gramlijstwinnaars = []
 
-        modelpath = os.getcwd()
-        nlimit = os.path.split(modelpath)[1]
-        n = nlimit.split("-")[0]
-        limit = nlimit.split("-")[-1]
-
-        ngrams = ld.ngram_table(text, int(n), int(limit))
+        bigram = ld.ngram_table(text, 2, 200)
+        trigram = ld.ngram_table(text, 3, 200)
         for alledingen in self.lang_dict:
-            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], ngrams), alledingen])
-
-        gramlijst.sort(reverse=True)
+            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], bigram), alledingen]) 
+        for alledingen in self.lang_dict:
+            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], trigram), alledingen])
+        gramlijst.sort(reverse = True)
         for i in range(k_best):
             gramlijstwinnaars.append(gramlijst[i][1])
-
+        
         return gramlijstwinnaars
 
     def recognize(self, filename, encoding='utf-8'):
@@ -59,7 +56,7 @@ class LangMatcher:
 
         :param filename: Filename of the text file that needs to be opened/scored
         """
-        with open(filename) as file:
+        with open(filename, encoding = encoding) as file:
             string = file.read()
             return self.score(string, 1)
 
