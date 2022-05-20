@@ -13,24 +13,37 @@ langdict["it"] = "Italian"
 langdict["nl"] = "Dutch"
 langdict["pt"] = "Portuguese"
 langdict["sv"] = "Swedish"
+<<<<<<< Updated upstream
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> Stashed changes
 
 
+>>>>>>> 98c653f7dd198475a7b53b059382d7fcef956e71
 
 
 
 def eval(model_path, test_path):
     """
-    This function takes a certian ngram collection compares it to every file in a europarl collection with the recognize function.
-    For every comparison, it prints the filename, the predicted language from recognize and the language from the text of the file.
-    If the predicted language is not the same as the actual language it adds ERROR to the message.
-    At the end this funtion prints the type of ngram, the amount of words in the text from the testdata files, the amount of correctly predicted languages
-    and the amount of incorrectly predicted languages.
+    This function takes a certain ngram collection compares it to every file in a europarl collection with the
+    recognize function. For every comparison, it prints the filename, the predicted language from recognize and the
+    language from the text of the file. If the predicted language is not the same as the actual language it adds
+    ERROR to the message. At the end this function prints the type of ngram, the amount of words in the text from the
+    testdata files, the amount of correctly predicted languages and the amount of incorrectly predicted languages.
+
     :param model_path: path to location where ngram dictionaries are stored (./models/2-200 or ./models/3-200)
     :param test_path: path to location where testdata is stored (path to europarl-10/30/90)
-    :return:
     """
+<<<<<<< HEAD
+
+=======
     
     
+<<<<<<< Updated upstream
+=======
+>>>>>>> 98c653f7dd198475a7b53b059382d7fcef956e71
+>>>>>>> Stashed changes
     gram = model_path[-5]
     zinl = test_path[-2:]
     goed = 0 #counts the number of correct predictions
