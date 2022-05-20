@@ -66,9 +66,10 @@ def eval(model_path, test_path):
        
         x = ln.recognize(file)
         if x[0] != echtetaal:
-            print(file, x[0], "ERROR", echtetaal)
+            goed += 0
+            #print(file, x[0], "ERROR", echtetaal)
         else:
-            print(file, x[0])
+            #print(file, x[0])
             goed += 1
         
     print(gramstr, "models for " + zinl + "-word sentences:", goed, "correct,", len(os.listdir()) - goed, "incorrect")

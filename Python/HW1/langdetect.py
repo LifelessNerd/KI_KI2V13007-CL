@@ -44,6 +44,8 @@ def ngram_table(text, n=3, limit=0):
     :param limit: How many ngrams should be output in the list (sorted by frequency)
     :return: A dictionary with a limited length, ordered by frequency that is contained in the value
     """
+    
+    limit = 18
     word_list = prepare(text)
     ngram_dict = {}
     limited_ordered_dict = {}

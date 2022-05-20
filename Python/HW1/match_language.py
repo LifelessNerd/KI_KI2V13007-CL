@@ -36,7 +36,7 @@ class LangMatcher:
         :param k_best: Amount of languages to be output
         :return: A list of k_best languages, ranked on score
         """
-        gramlijst = []
+        self.gramlijst = []
         gramlijstwinnaars = []
 
         nlimit = os.path.split(self.profilepath)[1]
@@ -45,11 +45,11 @@ class LangMatcher:
 
         ngrams = ld.ngram_table(text, int(n), int(limit)) # ngrams = ld.ngram_table(text, int(n), int(limit)) werkt niet
         for alledingen in self.lang_dict:
-            gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], ngrams), alledingen])
+            self.gramlijst.append([ld.cosine_similarity(self.lang_dict[alledingen], ngrams), alledingen])
 
-        gramlijst.sort(reverse=True)
+        self.gramlijst.sort(reverse=True)
         for i in range(k_best):
-            gramlijstwinnaars.append(gramlijst[i][1])
+            gramlijstwinnaars.append(self.gramlijst[i][1])
 
         return gramlijstwinnaars
 
@@ -65,5 +65,17 @@ class LangMatcher:
 
 
 if __name__ == "__main__":
-    pass
+    import sys
+    
+    
+    ln, textfile = sys.argv[1], sys.argv[2]
+   
+    ln2 = LangMatcher(ln)
+    
+    os.chdir("../")
+    os.chdir("../")
+    
+    os.chdir("./datafiles")
+    print(textfile, ln2.recognize(textfile), ln2.gramlijst[0][0])
     # Zie whatsapp wat hier nog moet
+
