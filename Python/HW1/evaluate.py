@@ -1,18 +1,18 @@
 import os
 import match_language as ml
 
-# langdict = dict()
-# langdict["da"] = "Danish"
-# langdict["de"] = "German"
-# langdict["el"] = "Greek"
-# langdict["en"] = "English"
-# langdict["es"] = "Spanish"
-# langdict["fi"] = "Finnish"
-# langdict["fr"] = "French"
-# langdict["it"] = "Italian"
-# langdict["nl"] = "Dutch"
-# langdict["pt"] = "Portuguese"
-# langdict["sv"] = "Swedish"
+langdict = dict()
+langdict["da"] = "Danish"
+langdict["de"] = "German"
+langdict["el"] = "Greek"
+langdict["en"] = "English"
+langdict["es"] = "Spanish"
+langdict["fi"] = "Finnish"
+langdict["fr"] = "French"
+langdict["it"] = "Italian"
+langdict["nl"] = "Dutch"
+langdict["pt"] = "Portuguese"
+langdict["sv"] = "Swedish"
 
 
 
@@ -29,20 +29,6 @@ def eval(model_path, test_path):
     :param test_path: path to location where testdata is stored (path to europarl-10/30/90)
     :return:
     """
-    
-    
-    langdict = dict()
-    langdict["da"] = "Danish"
-    langdict["de"] = "German"
-    langdict["el"] = "Greek"
-    langdict["en"] = "English"
-    langdict["es"] = "Spanish"
-    langdict["fi"] = "Finnish"
-    langdict["fr"] = "French"
-    langdict["it"] = "Italian"
-    langdict["nl"] = "Dutch"
-    langdict["pt"] = "Portuguese"
-    langdict["sv"] = "Swedish"
     
     
     gram = model_path[-5]
