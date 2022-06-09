@@ -1,0 +1,97 @@
+All models were trained with different functionsets.
+
+Model 1:
+	Featureset: test_features
+		# This featureset uses the sample given in the notebook by default. This means it has the following features:
+		word: the word itself
+		pos: the pos of the word itself
+	Results:
+		With N = 15806
+		    IOB Accuracy:  90.1%%
+			Precision:      0.0%%
+			Recall:         0.0%%
+			F-Measure:      0.0%%
+
+Model 2:
+	Featureset: features_prevnext
+		# This featureset uses the 6 perfect features plus the next word and its features.
+		word, pos
+		capital: whether the first letter of the word is a capital (boolean)
+		prevcapital: whether the first letter of the previous word is a capital (boolean)
+		prevword: the previous word in the sentence
+		prevpos: the pos of the previous word
+		nextword: the next word
+		nextpos: the pos of the next word
+		nextcapital: whether the first letter of the next word is a capital (boolean)
+	Results:
+		With N = 15806
+		    IOB Accuracy:  94.2%%
+			Precision:     48.6%%
+			Recall:        49.4%%
+			F-Measure:     49.0%%
+		
+Model 3:
+	Featureset: features_luka_countries
+		# This featureset uses a list of countries from https://github.com/google/dspl/blob/master/samples/google/canonical/countries.csv
+		word, pos, capital, prevcapital, prevword, prevpos
+		in_loc_file: if the word is in the countries file
+	Results:
+		With N = 15806
+			IOB Accuracy:  94.5%%
+			Precision:     47.5%%
+			Recall:        54.0%%
+			F-Measure:     50.6%%
+	
+Model 4:
+	Featureset: features_luka_names
+		# This featureset uses a list of names found at https://www.meertens.knaw.nl/nvb/topnamen/provincie/Utrecht/2014
+		word, pos, capital, prevcapital, prevword, prevpos
+		in_loc_file: if the word is in the names file
+	Results:
+		With N = 15806
+		    IOB Accuracy:  94.5%%
+			Precision:     47.5%%
+			Recall:        54.0%%
+			F-Measure:     50.6%%
+
+Model 5:
+	Featureset: features_best
+		# This is generally the best featureset, as given in the notebook as a striven for accuracy
+		# Later featuresets are based on this one, with extra features
+		word, pos, capital, prevcapital, prevword, prevpos
+	Results:
+		With N = 15806
+			IOB Accuracy:  94.5%%
+			Precision:     47.5%%
+			Recall:        54.0%%
+			F-Measure:     50.6%%
+		
+Model 6:
+	Featureset: features_best_BV
+		# Based on the features_best featureset, with a "BV" check implemented
+		word, pos, capital, prevcapital, prevword, prevpos
+		containsBV: if the next word is equal to "bv" or "b.v.", if so, this current word is probably a business (boolean)
+	Results:
+		With N = 15806
+			IOB Accuracy:  94.5%%
+			Precision:     47.5%%
+			Recall:        54.0%%
+			F-Measure:     50.6%%
+Model 7: 
+	Featureset: features_luka_whole_bimbam
+		# Uses the features_best set, plus all checklist variables
+		# csv's used: 
+			world-cities.csv (https://github.com/datasets/world-cities/blob/master/data/world-cities.csv)
+			countries.csv (see previous reference)
+			names.csv (see previous reference)
+		word, pos, capital, prevcapital, prevword, prevpos
+		name: if the word is a name (boolean)
+		city: if the word is a city (boolean)
+		country: if the word is a country (boolean)
+	Results:
+		With N = 15806
+			IOB Accuracy:  94.5%%
+			Precision:     47.5%%
+			Recall:        54.0%%
+			F-Measure:     50.6%%
+		
