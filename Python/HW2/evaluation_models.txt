@@ -112,7 +112,7 @@ Model 8:
     			Recall:         0.0%%
     			F-Measure:      0.0%%
 Model 9:
-	Featureset: features_best_capcount
+	Featureset: features_best_capcount (best.pickle)
 		# Uses all features from features_best, plus a capitals count
 		word, pos, capital, prevcapital, prevword, prevpos
 		capcount: a count of how many letters in the word are capitals (int)

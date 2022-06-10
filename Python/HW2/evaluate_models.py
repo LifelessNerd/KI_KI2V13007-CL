@@ -6,11 +6,7 @@ Created on Thu Jun  9 11:16:02 2022
 """
 import pickle
 import re
-import nltk
-from nltk.chunk.util import conlltags2tree, tree2conlltags
 from nltk.corpus import conll2002 as conll
-import features
-from custom_chunker import ConsecutiveNPChunker
 import sys
 def evaluatemodel(file):
     """

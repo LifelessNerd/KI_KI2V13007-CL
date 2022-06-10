@@ -52,6 +52,7 @@ def modelbuilder(feature, samplesize = 1000, algoritm="NaiveBayes"):
     
 if __name__ == "__main__":
     """Builds models based on the feature set that is given in the argument"""
+
     feature = sys.argv[1]
     if len(sys.argv) == 3: # only if given two parameters in commandline (index 0 = build_models.py)
         sample = sys.argv[2]    

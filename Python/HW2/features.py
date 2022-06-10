@@ -70,7 +70,7 @@ def features_prevnext(sentence, i, history):
 
 
 def features_luka_countries(sentence, i, history):
-    """"# This featureset uses a list of countries from https://github.com/google/dspl/blob/master/samples/google/canonical/countries.csv
+    """"# This featureset uses a list of countries from https://stefangabos.github.io/world_countries/
 		word, pos, capital, prevcapital, prevword, prevpos
 		in_loc_file: if the word is in the countries file"""
     word, pos = sentence[i]

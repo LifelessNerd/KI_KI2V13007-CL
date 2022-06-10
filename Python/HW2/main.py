@@ -2,7 +2,12 @@ import nltk
 import pandas
 nltk.download('conll2002') # Better safe than sorry
 from nltk.chunk.util import conlltags2tree, tree2conlltags
-
+from nltk.corpus import conll2002 as conll
+from copy import copy
+from abc import ABC
+from nltk.corpus import conll2002 as conll
+import nltk
+from nltk.chunk.util import conlltags2tree, tree2conlltags
 # If numpy is absent, the nltk fails with a very confusing error.
 # We avoid problems by checking directly
 try:
@@ -11,7 +16,7 @@ except ImportError:
     print("You need to download and install numpy!!!")
 
 
-from nltk.corpus import conll2002 as conll
+
 
 # for debugging, use a tiny corpus
 tiny_sample = 10
@@ -29,7 +34,7 @@ def reformat_corpus_for_tagger(train_sents):
     return [[((word, pos), iob) for (word, pos, iob) in tree2conlltags(sent)] for sent in train_sents]
 
 
-from copy import copy
+
 
 
 def create_training_data(feature_map, train_sents):
@@ -63,10 +68,7 @@ def create_training_data(feature_map, train_sents):
     return _train_set
 
 
-from abc import ABC
 
-import nltk
-from nltk.chunk.util import conlltags2tree, tree2conlltags
 """Checks if Numpy is present, if not raises an error."""
 # If numpy is absent, nltk fails with a very confusing error.
 # We avoid problems by checking directly
@@ -77,10 +79,5 @@ except ImportError:
     raise
 
 
-from nltk.corpus import conll2002 as conll
-
-
-
 training = conll.chunked_sents("ned.train")#[:100]
-
 
