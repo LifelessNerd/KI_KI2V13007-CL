@@ -37,5 +37,12 @@ def evaluatemodel(file):
 
 
 if __name__ == "__main__":
+    """Evaluates arguments as files, except when its best.pickle, so it doesnt try and read it as a normal file name, 
+    since normal files have @'s in them to split on. best.pickle doesnt, so we have a different system."""
     file = sys.argv[1]
-    evaluatemodel(file)
+    if file == "best.pickle":
+        pickledfile = pickle.load(open(file, "rb"))
+        testsent = conll.chunked_sents("ned.testa")
+        print(pickledfile.evaluate(testsent))
+    else:
+        evaluatemodel(file)

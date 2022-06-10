@@ -27,6 +27,16 @@ def test_features(sentence, i, history):
 
 
 def features_prevnext(sentence, i, history):
+    """"# This featureset uses the 6 perfect features plus the next word and its features.
+		word, pos = the word itself and its pos tag
+		capital: whether the first letter of the word is a capital (boolean)
+		prevcapital: whether the first letter of the previous word is a capital (boolean)
+		prevword: the previous word in the sentence
+		prevpos: the pos of the previous word
+		nextword: the next word
+		nextpos: the pos of the next word
+		nextcapital: whether the first letter of the next word is a capital (boolean)"""
+
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
     try:
@@ -60,6 +70,9 @@ def features_prevnext(sentence, i, history):
 
 
 def features_luka_countries(sentence, i, history):
+    """"# This featureset uses a list of countries from https://github.com/google/dspl/blob/master/samples/google/canonical/countries.csv
+		word, pos, capital, prevcapital, prevword, prevpos
+		in_loc_file: if the word is in the countries file"""
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
 
@@ -87,6 +100,9 @@ def features_luka_countries(sentence, i, history):
 
 
 def features_luka_names(sentence, i, history):
+    """# This featureset uses a list of names found at https://www.meertens.knaw.nl/nvb/topnamen/provincie/Utrecht/2014
+		word, pos, capital, prevcapital, prevword, prevpos
+		in_loc_file: if the word is in the names file"""
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
 
@@ -114,6 +130,9 @@ def features_luka_names(sentence, i, history):
 
 
 def features_best(sentence, i, history):
+    """This is generally the best featureset, as given in the notebook as a striven for accuracy
+		# Later featuresets are based on this one, with extra features
+		word, pos, capital, prevcapital, prevword, prevpos"""
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
 
@@ -138,6 +157,9 @@ def features_best(sentence, i, history):
 
 
 def features_best_BV(sentence, i, history):
+    """# Based on the features_best featureset, with a "BV" check implemented
+		word, pos, capital, prevcapital, prevword, prevpos
+		containsBV: if the next word is equal to "bv" or "b.v.", if so, this current word is probably a business (boolean)"""
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
     try:
@@ -170,6 +192,15 @@ def features_best_BV(sentence, i, history):
 
 
 def features_luka_whole_bimbam(sentence, i, history):
+    """# Uses the features_best set, plus all checklist variables
+		# csv's used:
+			world-cities.csv (https://github.com/datasets/world-cities/blob/master/data/world-cities.csv)
+			countries.csv (see previous reference)
+			names.csv (see previous reference)
+		word, pos, capital, prevcapital, prevword, prevpos
+		name: if the word is a name (boolean)
+		city: if the word is a city (boolean)
+		country: if the word is a country (boolean)"""
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
 
@@ -211,6 +242,14 @@ def features_luka_whole_bimbam(sentence, i, history):
 
 
 def features_luka_lists(sentence, i, history):
+    """# Uses only list checks
+		# csv's used:
+			world-cities.csv (https://github.com/datasets/world-cities/blob/master/data/world-cities.csv)
+			countries.csv (see previous reference)
+			names.csv (see previous reference)
+		name: if the word is a name (boolean)
+		city: if the word is a city (boolean)
+		country: if the word is a country (boolean)"""
     word, pos = sentence[i]
 
     name = False
@@ -239,6 +278,9 @@ def features_luka_lists(sentence, i, history):
 
 
 def features_best_capcount(sentence, i, history):
+    """# Uses all features from features_best, plus a capitals count
+		word, pos, capital, prevcapital, prevword, prevpos
+		capcount: a count of how many letters in the word are capitals (int)"""
     word, pos = sentence[i]
     prevword, prevpos = sentence[i - 1]
     capcount = 0

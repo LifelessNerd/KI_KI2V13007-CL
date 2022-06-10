@@ -51,11 +51,12 @@ def modelbuilder(feature, samplesize = 1000, algoritm="NaiveBayes"):
     print("file pickled succesfully under name:", title)
     
 if __name__ == "__main__":
+    """Builds models based on the feature set that is given in the argument"""
     feature = sys.argv[1]
-    if len(sys.argv) == 3: #only if given two parameters in commandline (index 0 = build_models.py)
+    if len(sys.argv) == 3: # only if given two parameters in commandline (index 0 = build_models.py)
         sample = sys.argv[2]    
         modelbuilder(feature, sample)
-    elif len(sys.argv) > 3: #for optional algoritm parameter       
+    elif len(sys.argv) > 3: # for optional algoritm parameter
         sample = sys.argv[2] 
         algo = sys.argv[3]
         modelbuilder(feature, sample, algo)
