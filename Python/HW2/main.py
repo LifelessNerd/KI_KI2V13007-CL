@@ -1,5 +1,5 @@
 import nltk
-
+import pandas
 nltk.download('conll2002')
 from nltk.chunk.util import conlltags2tree, tree2conlltags
 

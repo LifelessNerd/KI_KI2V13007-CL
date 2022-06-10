@@ -24,6 +24,7 @@ from abc import ABC
 
 import nltk
 from nltk.chunk.util import conlltags2tree, tree2conlltags
+from copy import copy
 
 # If numpy is absent, nltk fails with a very confusing error.
 # We avoid problems by checking directly
@@ -145,12 +146,11 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
 
         self.train_set = []  # initialise self.train_set
 
-        # TODO: store the feature_map parameter as self.feature_map
+        
         self.feature_map = feature_map
-        # TODO: call self.create_training_data on train_sents
+        
         self.create_training_data(train_sents)
-        # TODO: check that algorithm is one of "NaiveBayes", "DecisionTree", "IIS", and "GIS"
-        # and raise an error if it's not
+       
         try:
             if algorithm not in ["NaiveBayes", "DecisionTree", "IIS", "GIS"]:
                 raise ValueError
@@ -185,22 +185,17 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
 
         :param training_sentences: list of nltk.Trees with IOB tags
 
-        TODO make your function into a method that
-            uses the stored self.feature_map,
-            calls self.reformat_corpus_for_tagger on training_sentences,
-            and stores the training data as self.train_set
+        
         """     
-        from copy import copy
+        
         reformated = self.reformat_corpus_for_tagger(training_sentences)  
-        # TODO turn the sentences into appropriate training data by finding their features
-        # store them in self._train_set
+       
         for sent in reformated:
-            sentlist = []
-            sent = copy(sent)
-            sent2 = [(word, tag) for ((word, tag), ios) in sent]
-            for i in range(len(sent)):
+            sentlist = [] #new history list for every sentence
+            sent2 = [(word, tag) for ((word, tag), ios) in sent] #removes the IOB for feature_map
+            for i in range(len(sent)): #iterate over every word in sentence for feature_map function
                 self.train_set.append(tuple([self.feature_map(sent2, i, sentlist), sent[i][1]]))
-                sentlist.append(sent[i][1])
+                sentlist.append(sent[i][1]) #adds POS to history list
 
          
 
@@ -221,12 +216,3 @@ class _ConsecutiveNPChunkTagger(nltk.TaggerI):
         return zip(sentence, history)
 
 
-#training = conll.chunked_sents("ned.train")[:100]
-
-# train a model on 100 training items
-#test_nl_NER = ConsecutiveNPChunker(test_features, training)
-#tiny_sample = 10
-#raining = conll.chunked_sents("ned.train")[:tiny_sample] # SHORT DATASET: FOR DEMO/DEBUGGING ONLY! 
-# training = conll.chunked_sents("ned.train")
-#testing = conll.chunked_sents("ned.testa")
-#print(test_nl_NER.evaluate(testing))

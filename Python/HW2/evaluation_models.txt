@@ -1,4 +1,5 @@
 All models were trained with different functionsets.
+These models were trained with the NaiveBayes classifier algorithm.
 
 Model 1:
 	Featureset: test_features
@@ -94,4 +95,30 @@ Model 7:
 			Precision:     47.5%%
 			Recall:        54.0%%
 			F-Measure:     50.6%%
-		
+Model 8: 
+	Featureset: features_luka_lists
+		# Uses only list checks
+		# csv's used: 
+			world-cities.csv (https://github.com/datasets/world-cities/blob/master/data/world-cities.csv)
+			countries.csv (see previous reference)
+			names.csv (see previous reference)
+		name: if the word is a name (boolean)
+		city: if the word is a city (boolean)
+		country: if the word is a country (boolean)
+	Results:
+		With N = 15806
+			IOB Accuracy:  90.1%%
+    			Precision:      0.0%%
+    			Recall:         0.0%%
+    			F-Measure:      0.0%%
+Model 9:
+	Featureset: features_best_capcount
+		# Uses all features from features_best, plus a capitals count
+		word, pos, capital, prevcapital, prevword, prevpos
+		capcount: a count of how many letters in the word are capitals (int)
+	Results:
+		With N = 15806
+			IOB Accuracy:  94.1%%
+			Precision:     45.6%%
+			Recall:        59.8%%
+			F-Measure:     51.7%%
